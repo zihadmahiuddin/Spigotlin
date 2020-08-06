@@ -52,7 +52,7 @@ configurations {
 
 dependencies {
     compile(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Properties.Versions.KOTLIN}")
+    embed("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Properties.Versions.KOTLIN}")
     compileOnly("org.spigotmc:spigot-api:${Properties.Versions.SPIGOT}")
 }
 
