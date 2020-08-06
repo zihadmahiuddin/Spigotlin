@@ -28,17 +28,17 @@ plugins {
 group = "cf.zihad"
 version = "1.0"
 
-val JAVA_11 = JavaVersion.VERSION_11.toString()
+val javaVersion = JavaVersion.VERSION_1_8.toString()
 
 val compileJava = tasks.withType<JavaCompile>().first()!!
 val compileKotlin = tasks.withType<KotlinCompile>().first()!!
 val jar = tasks.withType<Jar>().first()!!
 
 compileJava.options.encoding = "UTF-8"
-compileJava.sourceCompatibility = JAVA_11
-compileJava.targetCompatibility = JAVA_11
+compileJava.sourceCompatibility = javaVersion
+compileJava.targetCompatibility = javaVersion
 
-compileKotlin.kotlinOptions.jvmTarget = JAVA_11
+compileKotlin.kotlinOptions.jvmTarget = javaVersion
 
 jar.baseName = "${project.name}-${version}_S${Properties.Versions.SPIGOT}_K${Properties.Versions.KOTLIN}"
 jar.version = ""
