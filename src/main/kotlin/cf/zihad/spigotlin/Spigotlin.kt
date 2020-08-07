@@ -9,7 +9,7 @@ class Spigotlin : JavaPlugin() {
     }
 
     override fun onDisable() {
-        logger.info("Disabled $NAME=rf  v$VERSION!")
+        logger.info("Disabled $NAME  v$VERSION!")
     }
 
     companion object {
