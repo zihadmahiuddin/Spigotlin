@@ -9,9 +9,6 @@ object Properties {
 
 buildscript {
     repositories {
-        maven {
-            url = uri("https://files.minecraftforge.net/maven")
-        }
         jcenter()
         mavenCentral()
     }
@@ -40,18 +37,18 @@ compileJava.targetCompatibility = javaVersion
 
 compileKotlin.kotlinOptions.jvmTarget = javaVersion
 
-jar.baseName = "${project.name}-${version}_S${Properties.Versions.SPIGOT}_K${Properties.Versions.KOTLIN}"
-jar.version = ""
+jar.archiveBaseName.set("${project.name}-${version}_S${Properties.Versions.SPIGOT}_K${Properties.Versions.KOTLIN}")
+jar.archiveVersion.set("")
 
 val compile = configurations.getByName("compile")
 val embed = configurations.create("embed")
 
 configurations {
-    compile.extendsFrom(embed)
+    compile.get().extendsFrom(embed)
 }
 
 dependencies {
-    compile(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     embed("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Properties.Versions.KOTLIN}")
     compileOnly("org.spigotmc:spigot-api:${Properties.Versions.SPIGOT}")
 }
@@ -59,9 +56,7 @@ dependencies {
 repositories {
     mavenCentral()
     jcenter()
-    maven {
-        url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots")
-    }
+    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots")
 }
 
 jar.from(embed.map { if (it.isDirectory) it as Any else zipTree(it) })
