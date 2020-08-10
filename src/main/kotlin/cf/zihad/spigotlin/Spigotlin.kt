@@ -19,7 +19,7 @@ class Spigotlin : JavaPlugin() {
      * The function that's called when the plugin is disabled by the server.
      */
     override fun onDisable() {
-        logger.info("Disabled $NAME=rf  v$VERSION!")
+        logger.info("Disabled $NAME  v$VERSION!")
     }
 
     companion object {
