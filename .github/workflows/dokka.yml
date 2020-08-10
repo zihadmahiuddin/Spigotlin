@@ -17,6 +17,7 @@ jobs:
         id: generate-docs
       - name: Switch Branch & Commit
         run: |
+          git fetch
           git checkout gh-pages
           git add .
           git commit -m "${branch#refs/heads/}#$(git rev-parse --short "$GITHUB_SHA") docs"
