@@ -20,6 +20,7 @@ buildscript {
 
 plugins {
     kotlin("jvm") version "1.3.72"
+    id("org.jetbrains.dokka") version "1.4.0-rc"
 }
 
 group = "cf.zihad"
@@ -57,6 +58,10 @@ repositories {
     mavenCentral()
     jcenter()
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots")
+}
+
+tasks.dokkaJavadoc {
+    outputDirectory = "docs"
 }
 
 jar.from(embed.map { if (it.isDirectory) it as Any else zipTree(it) })
