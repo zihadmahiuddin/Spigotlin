@@ -20,6 +20,8 @@ jobs:
           git fetch
           git checkout gh-pages
           git add .
+          git config user.email "zihadmahiuddin@gmail.com"
+          git config user.name "Zihad"
           git commit -m "${branch#refs/heads/}#$(git rev-parse --short "$GITHUB_SHA") docs"
         id: commit
       - name: Push changes
